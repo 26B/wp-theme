@@ -92,10 +92,6 @@ export default {
   eslint: {
     src: `${src}/scripts/**/*.{js,jsx}`
   },
-  phpunit: {
-    watch: '/**/*.php',
-    src: `${test}/phpunit/**/*.test.php`
-  },
   browserSync: {
     proxy: host,
     files: ['*.css', '**/*.php', `${dest}/**`, '!**/*.map']
