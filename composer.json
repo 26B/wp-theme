@@ -1,0 +1,29 @@
+{
+  "name": "[composer_vendor]/[composer_name]",
+  "description": "[theme_description]",
+  "type": "wordpress-theme",
+  "keywords": ["wordpress", "theme"],
+  "homepage": "[theme_url]",
+  "license": "GPL-2.0+",
+  "require": {
+    "composer/installers": "~1.0",
+    "dg/composer-cleaner": "^1.1",
+    "php": ">=5.6"
+  },
+  "require-dev": {},
+  "authors": [],
+  "autoload": {
+    "psr-4": {
+      "[autoload_psr_4]": "lib/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "[autoload_tests_psr_4]": "tests/"
+    }
+  },
+  "minimum-stability": "stable",
+  "config": {
+    "sort-packages": true
+  }
+}
