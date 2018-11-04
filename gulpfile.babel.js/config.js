@@ -1,5 +1,4 @@
 import hasFlag from 'has-flag';
-import findupNodeModules from 'findup-node-modules';
 
 const host = '[theme_slug].test';
 const src = './src';
@@ -20,10 +19,7 @@ export default {
     settings: {
       sourceComments: debug ? 'map' : null,
       imagePath: `${dest}/images`,
-      includePaths: [
-        findupNodeModules('modularized-normalize-scss'),
-        findupNodeModules('susy/sass')
-      ]
+      includePaths: []
     }
   },
   autoprefixer: {

@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 import eslint from 'gulp-eslint';
-import config from '../config';
+import config from './config';
 
 gulp.task('eslint', () =>
   gulp

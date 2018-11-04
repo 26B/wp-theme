@@ -2,7 +2,7 @@ import gulp from 'gulp';
 import browserSync from 'browser-sync';
 import concat from 'gulp-concat';
 import font2css from 'gulp-font2css';
-import config from '../config';
+import config from './config';
 
 gulp.task('fonts', () =>
   gulp

@@ -9,18 +9,18 @@
  * See browserify.bundleConfigs in gulp/config.js
  */
 
-import gulp from 'gulp';
+import { task, dest } from 'gulp';
 import glob from 'glob';
 import browserify from 'browserify';
 import source from 'vinyl-source-stream';
 import watchify from 'watchify';
-import config from '../config';
+import config from './config';
 import bundleLogger from '../util/bundle-logger';
 import { dependencies } from '../../package.json';
 
 let bundleQueue = config.browserify.bundleConfigs.length;
 
-gulp.task('browserify', callback => {
+const browserifyTask = task('browserify', callback => {
   function browserifyThis(bundleConfig) {
     let bundler = browserify({
       cache: {},
@@ -31,15 +31,6 @@ gulp.task('browserify', callback => {
       debug: config.browserify.debug
     });
 
-    function bundle() {
-      bundleLogger.start(bundleConfig.outputName);
-      return bundler
-        .bundle()
-        .pipe(source(bundleConfig.outputName))
-        .pipe(gulp.dest(bundleConfig.dest))
-        .on('end', reportFinished);
-    }
-
     function reportFinished() {
       bundleLogger.end(bundleConfig.outputName);
       if (bundleQueue > 0) {
@@ -48,6 +39,16 @@ gulp.task('browserify', callback => {
           return callback();
         }
       }
+      return null;
+    }
+
+    function bundle() {
+      bundleLogger.start(bundleConfig.outputName);
+      return bundler
+        .bundle()
+        .pipe(source(bundleConfig.outputName))
+        .pipe(dest(bundleConfig.dest))
+        .on('end', reportFinished);
     }
 
     if (bundleConfig.vendor === true) {
@@ -81,3 +82,5 @@ gulp.task('browserify', callback => {
 
   return config.browserify.bundleConfigs.forEach(browserifyThis);
 });
+
+export default browserifyTask;

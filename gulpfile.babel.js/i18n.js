@@ -1,7 +1,7 @@
 import gulp from 'gulp';
 import wpPot from 'gulp-wp-pot';
 import sort from 'gulp-sort';
-import config from '../config';
+import config from './config';
 
 gulp.task('i18n', () =>
   gulp

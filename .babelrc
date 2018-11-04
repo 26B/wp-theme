@@ -1,0 +1,23 @@
+{
+  "presets": [
+    "@babel/preset-env"
+  ],
+  "plugins": [
+    "@babel/transform-object-assign",
+    "@babel/transform-runtime"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@babel/transform-object-assign",
+        "@babel/transform-runtime"
+      ]
+    },
+    "production": {
+      "plugins": [
+        "@babel/transform-object-assign",
+        "@babel/transform-runtime"
+      ]
+    }
+  }
+}
